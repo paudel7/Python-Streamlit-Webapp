@@ -21,12 +21,6 @@ def data_summary():
     st.header('Statistics of Dataframe')
     st.write(df.describe())
 
-    # def charting():
-    #     st.header('Charting')
-    #     chart_data = pd.DataFrame(
-    #     #np.random.randn(20, 3),
-    #     columns=(x=df['Date'], y=df['Magnitude'])
-    #     st.bar_chart(columns)
 
 def data_header():
     st.header('Header of Dataframe')
@@ -51,7 +45,41 @@ options = st.sidebar.radio('Select what you want to display:', ['Home', 'Data Su
 
 # Check if file has been uploaded
 if upload_file is not None:
-    df = pd.read_csv(upload_file)
+    def load_data(nrows):
+        df = pd.read_csv(upload_file)
+        return df
+df = load_data(100)
+
+
+if st.checkbox("Show Raw Data",False):
+    st.subheader('Raw Data')
+    st.write(df)
+
+# Data Showcasing
+# def load_data(nrows):
+#     data = pd.read_csv(DATA_URL, nrows=nrows, parse_dates=[['CRASH_DATE','CRASH_TIME']])
+#     data.dropna(subset=['LATITUDE','LONGITUDE'], inplace=True)
+#     lowercase = lambda x: str(x).lower()
+#     data.rename(lowercase, axis='columns', inplace=True)
+#     data.rename(columns={'crash_date_crash_time': 'date/time'},inplace=True)
+#     return data
+# # data = load_data(100)
+
+# charting ==NOT WORKING PROPERLY
+def charting():
+    st.header('Charting')
+    chart_data = pd.DataFrame(
+    #np.random.randn(20, 3),
+    #columns=[x = df['Date'], y = df['Magnitude']]
+    columns = ['Date', 'Magnitude']
+    x, y = df[columns]
+    st.bar_chart(columns)
+
+# map
+lowercase = lambda x: str(x).lower()
+df.rename(lowercase, axis='columns', inplace=True)
+magnitude_measured = st.slider("Magnitude of Earthquake", 5, 9)
+st.map(df.query("magnitude >= @magnitude_measured")[["latitude","longitude"]].dropna(how="any"))
 
 # Navigation options
 if options == 'Home':
