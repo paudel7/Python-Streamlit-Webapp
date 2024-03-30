@@ -110,13 +110,13 @@ with st.container():
     image_column,text_column = st.columns((1,2))
     with image_column:
     #inserting images
-        st.image(img_powerBI)
+        #st.image(img_powerBI)
     with text_column:
     #inserting text
         st.subheader(" The Project Title - 2")
         st.write(
         """
-        Project Description - 2 Goes Here
+        Project Description - 2
 
         """
     )
