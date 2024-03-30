@@ -1,85 +1,93 @@
 import streamlit as st
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import altair as alt
 
 st.title ("Projects")
 st.subheader(":blue[Earthquake Data Explorer] :sunglasses:")
-st.text('Get ready for exploration of Earthquake Data')
-#new_title = '<p style="font-family:sans-serif; color:Green; font-size: 42px;">New image</p>'
-#st.subheader('A subheader with _italics_ :blue[colors] and emojis :sunglasses:')
+st.text('Get ready for exploring Earthquake Data')
 
-#st.set_page_config(layout="wide")
-
-# Functions for each of the pages
 def home(uploaded_file):
     if uploaded_file:
         st.header('Use Navigation for Exploring Data')
-    else:
-        st.header('To begin upload a file')
-
+    
 def data_summary():
     st.header('Statistics of Dataframe')
     st.write(df.describe())
-
 
 def data_header():
     st.header('Header of Dataframe')
     st.write(df.head())
 
-def displayplot():
-    st.header('Plot of Data')
-
-    fig, ax = plt.subplots(1,1)
-    ax.scatter(x=df['Depth'], y=df['Magnitude'])
-    ax.set_xlabel('Depth')
-    ax.set_ylabel('Magnitude')
-
-    st.pyplot(fig)
-
 # Sidebar setup
 st.sidebar.title('Sidebar')
 upload_file = st.sidebar.file_uploader('Upload a file containing earthquake data')
+
 #Sidebar navigation
 st.sidebar.title('Navigation')
-options = st.sidebar.radio('Select what you want to display:', ['Home', 'Data Summary', 'Charting', 'Data Header', 'Scatter Plot'])
-
+options = st.sidebar.radio('Select one to display:', ['Home', 'Data Summary','Data Header', 
+                                                      'Scatter Plot','Charting'])
 # Check if file has been uploaded
 if upload_file is not None:
     def load_data(nrows):
         df = pd.read_csv(upload_file)
         return df
-df = load_data(100)
-
+else:
+    df = pd.read_csv('database.csv')
+        #df = load_data(100)
 
 if st.checkbox("Show Raw Data",False):
     st.subheader('Raw Data')
     st.write(df)
 
 # Data Showcasing
-# def load_data(nrows):
-#     data = pd.read_csv(DATA_URL, nrows=nrows, parse_dates=[['CRASH_DATE','CRASH_TIME']])
-#     data.dropna(subset=['LATITUDE','LONGITUDE'], inplace=True)
-#     lowercase = lambda x: str(x).lower()
-#     data.rename(lowercase, axis='columns', inplace=True)
-#     data.rename(columns={'crash_date_crash_time': 'date/time'},inplace=True)
-#     return data
-# # data = load_data(100)
-
-# charting ==NOT WORKING PROPERLY
-def charting():
-    st.header('Charting')
-    chart_data = pd.DataFrame(
-    #np.random.randn(20, 3),
-    #columns=[x = df['Date'], y = df['Magnitude']]
-    columns = ['Date', 'Magnitude']
-    x, y = df[columns]
-    st.bar_chart(columns)
 
 # map
 lowercase = lambda x: str(x).lower()
 df.rename(lowercase, axis='columns', inplace=True)
 magnitude_measured = st.slider("Magnitude of Earthquake", 5, 9)
 st.map(df.query("magnitude >= @magnitude_measured")[["latitude","longitude"]].dropna(how="any"))
+
+
+# Define a function to display a bar chart or column chart
+def display_chart(df, chart_type):
+    if chart_type == 'bar':
+        chart = alt.Chart(df).mark_bar().encode(
+            x='date:T',
+            y='magnitude:Q',
+            tooltip=['date:T', 'magnitude:Q']
+        ).properties(
+            width=600,
+            height=400,
+            title='Earthquake Magnitude by Date (Bar Chart)'
+        )
+    elif chart_type == 'column':
+        chart = alt.Chart(df).mark_bar().encode(
+            x='date:T',
+            y='magnitude:Q',
+            tooltip=['date:T', 'magnitude:Q']
+        ).properties(
+            width=600,
+            height=400,
+            title='Earthquake Magnitude by Date (Column Chart)'
+        ).configure_mark(
+            opacity=0.5
+        )
+    # Show the chart
+    st.altair_chart(chart)
+# Ask the user which chart type they want to display
+chart_type = st.selectbox("Select Chart Type", ['bar', 'column'])
+
+
+def displayplot():
+    st.header('Plot of Data')
+    fig, ax = plt.subplots(1,1)
+    ax.scatter(x=df['depth'], y=df['magnitude'])
+    ax.set_xlabel('depth')
+    ax.set_ylabel('magnitude')
+
+    st.pyplot(fig)
 
 # Navigation options
 if options == 'Home':
@@ -91,15 +99,5 @@ elif options == 'Data Header':
 elif options == 'Scatter Plot':
     displayplot()
 elif options == 'Charting':
-    charting()
-
-
-def displayplot():
-    st.header('Plot of Data')
-
-    fig, ax = plt.subplots(1,1)
-    ax.scatter(x=df['Depth'], y=df['Magnitude'])
-    ax.set_xlabel('Depth')
-    ax.set_ylabel('Magnitude')
-
-    st.pyplot(fig)
+    display_chart(df, chart_type)
+    
