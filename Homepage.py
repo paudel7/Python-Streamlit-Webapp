@@ -10,7 +10,7 @@ st.set_page_config(
 
 # Function to get current temperature and feels like temperature by location
 def get_temperature(location):
-    api_key = "a8f64ad9ea821df9706a8244914ecb74"  # Replace with your actual API key
+    api_key = "YOUR APP KEY"  # Replace with your actual API key
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
     complete_url = base_url + "q=" + location + "&appid=" + api_key + "&units=metric"
     response = requests.get(complete_url)
