@@ -40,6 +40,24 @@ Please scroll down to know more about this project
 
 This project is a web application built using Streamlit, a powerful Python framework for creating interactive web applications. The platform showcases a diverse set of features, including weather data, project displays, and personal information about the developer. The application is designed for ease of use and provides a rich, interactive user experience.
 
+**Key Technologies Used** <br>
+•	Streamlit: Front-end framework for building the app interface.
+•	Python: Backend programming language.
+•	Pandas, NumPy: For data manipulation and numerical operations.
+•	Matplotlib: Used for visualizations and data representation.
+•	Pillow: For image processing tasks.
+•	Requests: To fetch external data via APIs.
+•	Streamlit-Lottie: To integrate Lottie animations into the app.<p>
+<br>
+**Core Features and Functionalities**
+1.	Weather Information: Displays real-time weather updates (temperature and "feels like") based on the selected location, fetched from the OpenWeatherMap API [Explore OpenWeatherMap »](https://openweathermap.org/)
+2.	Date & Time: Dynamic display of the current date and time.
+3.	Lottie Animations: Interactive section for displaying animations that enhance the user interface.
+4.	Project Showcase: Displays Kiran’s featured projects with categories and subcategories, allowing users to explore detailed descriptions.
+5.	Image Upload/Camera Capture: Users can upload images or take photos using their device, which are displayed on the page.
+6.	Contact Form: Enables users to contact Kiran directly through a simple, easy-to-use form.
+
+
 ## ✨ Demo-Preview
 
 Here are some demo we can get in this project:
