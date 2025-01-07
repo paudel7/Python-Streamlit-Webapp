@@ -6,4 +6,4 @@ Pillow==9.2.0
 streamlit==1.23.0
 streamlit-lottie==0.0.3
 streamlit_lottie==0.0.3
-pip install altair==4.2.2
+altair==4.2.2
