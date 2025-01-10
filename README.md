@@ -1,6 +1,7 @@
-## 👋 Hello, Welcome to my application 'Streamlit Web Application' !
+## <p align="center">👋 Hello, Welcome to my Application Project 👋 <br>
+<h3 align="center">'Streamlit Web Application' !</h3></p>
 
-<h4 align="center">It intends to preview a glimpse about project portfolio presenting some nice works with visuals.</h4>
+<h4 align="center">This Streamlit-based web application is designed to showcase interactive data visualization and analysis tools. The platform allows users to upload earthquake-related CSV files, explore dataset summaries, and generate insightful visualizations such as scatter plots, geographic maps, and statistical summaries. Its intuitive design enhances data accessibility and provides meaningful insights for decision-making.</h4>
 
 <p align="center">
   <img src="./default_image/Homepg.jpg" alt="Project Banner" width="800">
@@ -32,6 +33,10 @@ Please scroll down to know more about this project
 </p>
 
 ## 🎯 About The Project
+For more details:<br>
+<a href="https://sites.google.com/view/python-streamlit-web-app/home">Project Documentation Homepage</a><br>
+<a href="https://sites.google.com/view/python-streamlit-web-app/home/pages">Project Documentation Projectpage</a><br>
+<a href="https://mypyweb.streamlit.app/">View the application live</a>
 
 **Application Structure**
 <p align="center">
@@ -60,7 +65,7 @@ This project is a web application built using Streamlit, a powerful Python frame
 
 ## ✨ Demo-Preview
 
-Here are some demo we can get in this project:
+Here are some snapshots of the project:
 
 **Project Page Structure**
 <p align="center"><br>
@@ -89,14 +94,14 @@ NA at this moment
 
 ## 📚 References
 
-<!--<p align="center">
+<p align="center">
   <img src="./assets/images/reference1.png" alt="References" width="600">
 </p>
 
 NA at this moment
 
 ## 📋 Table of Contents 
-<!-- - [Demo-Preview](#-demo-preview)
+[Demo-Preview](#-demo-preview)
 - [Workflow](#-workflow)
 - [References](#-references)
 - [Installation](#-installation)
@@ -118,7 +123,7 @@ For more usage info, just take a look at the instruction text file.
 
 <p align="right">(<a href="#-table-of-contents">back to top</a>)</p>
 
--->
+
 ## 🤝 Contribute
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -131,7 +136,7 @@ Contributions are what make the open source community such an amazing place to l
 
 <p align="right">(<a href="#-table-of-contents">back to top</a>)</p>
 
-<!--
+
 ## 📝 License
 
 Distributed under the [License Type] License. See `LICENSE.txt` for more information.
@@ -157,17 +162,20 @@ Distributed under the [License Type] License. See `LICENSE.txt` for more informa
 <p align="left">
   <!-- Add your tech stack icons here -->
   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/>
-  <!-- Add more tools as needed
+  <!-- Add more tools as needed-->
 </p>
+
+
 
 ## 🙏 Acknowledgments
 
 Here is a list of some of the resources I found helpful and would like to give credit to:
 
-* NA
+---
 
 
 <!-- <p align="right">(<a href="#-table-of-contents">back to top</a>)</p> -->
+<a href="https://sites.google.com/view/python-streamlit-web-app/home">For more pls. visit</a><br>
 
 ---
 <p align="center">If you found this project helpful, please consider giving it a ⭐!</p>
